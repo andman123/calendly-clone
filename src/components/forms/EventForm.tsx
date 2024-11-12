@@ -34,7 +34,7 @@ import {
 	AlertDialogTitle,
 	AlertDialogTrigger,
 } from "../ui/alert-dialog";
-import { useState, useTransition } from "react";
+import { useTransition } from "react";
 
 export function EventForm({
 	event,
@@ -219,10 +219,24 @@ export function EventForm({
 						</AlertDialog>
 					)}
 
-					<Button type="button" asChild variant="outline">
+					<Button
+						disabled={
+							isDeletePending || form.formState.isSubmitting
+						}
+						type="button"
+						asChild
+						variant="outline"
+					>
 						<Link href="/events">Cancel</Link>
 					</Button>
-					<Button type="submit">Save</Button>
+					<Button
+						disabled={
+							isDeletePending || form.formState.isSubmitting
+						}
+						type="submit"
+					>
+						Save
+					</Button>
 				</div>
 			</form>
 		</Form>
